@@ -1,0 +1,46 @@
+import './stylesheets/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import Recursos from './components/recursos';
+import Create from './components/create';
+import Edit from './components/edit';
+import Show from './components/show';
+import Broken from './components/broken';
+import NoMatch from './components/noMatch';
+import React, {Component} from 'react';
+import {HashRouter, Switch, Route} from 'react-router-dom';
+
+
+class App extends Component {
+  render() {
+    return (
+      <HashRouter>
+        <div>
+          <Switch>
+            <Route exact path='/'>
+             <Recursos /> 
+            </Route>
+            <Route exact path='/new'>
+              <Create />
+            </Route>
+            <Route path='/recursos/:id/edit'>
+              <Edit />
+            </Route>
+            <Route path='/show/:id'>
+              <Show />
+            </Route>
+            <Route path="/broken">
+              <Broken />
+            </Route>
+            <Route exact path='*'>
+              <NoMatch />
+            </Route>
+          </Switch>
+        </div>
+      </HashRouter>  
+    );
+  }
+}
+
+
+export default App;
